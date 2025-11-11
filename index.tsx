@@ -206,6 +206,14 @@ const App = () => {
     width: '100%',
   };
 
+  const subtitleStyle: React.CSSProperties = {
+    fontSize: '1rem',
+    margin: '0',
+    fontWeight: 300,
+    textTransform: 'uppercase',
+    color: 'rgba(255, 255, 255, 0.8)',
+  };
+
   return (
     <>
       <nav style={navStyle}>
@@ -217,12 +225,15 @@ const App = () => {
       </div>
       <div style={mainContentWrapper}>
         <div style={contentStyle}>
-          <p style={{ fontSize: '1.2rem', margin: '0', fontWeight: 300, textTransform: 'uppercase', color: 'rgba(255, 255, 255, 0.8)' }}>
+          <p style={subtitleStyle}>
             welcome to
           </p>
-          <h1 style={{ fontSize: '1.8rem', margin: 0, letterSpacing: '0.15em', fontWeight: 700 }}>
-            T R I Z E N - W E B S
+          <h1 style={{ fontSize: '2.2rem', margin: '0.25rem 0', letterSpacing: '0.1em', fontWeight: 700 }}>
+            TRIZEN WEBS
           </h1>
+          <p style={subtitleStyle}>
+            we make you alive on online
+          </p>
           <button className="build-button" onClick={() => setIsModalOpen(true)}>
             <span role="img" aria-label="spanner">🔧</span> Build Now
           </button>
@@ -230,21 +241,19 @@ const App = () => {
         <footer className="about-section">
           <h3>About Us</h3>
           <p>
-            We’re a team of three passionate developers driven by one goal — to turn ideas into fast, beautiful, and functional websites.
+            We're a team of three passionate developers driven by one goal — to turn ideas into fast, beautiful, and functional websites'.'
           </p>
           <p>
             Our journey began with a shared love for design, technology, and problem-solving. Together, we blend creativity with clean code to help businesses, creators, and startups build a strong digital presence
           </p>
           <p>
-            We don’t just build websites — we build digital experiences that help brands grow.
+            We don't just build websites — we build digital experiences that help brands grow.
           </p>
           <p>
-            <strong>Let’s create something amazing together.</strong>
+            <strong>Let's create something amazing together'.</strong>
           </p>
           <a 
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=vasudevan7348@gmail.com&cc=rhithickprakash2007@gmail.com" 
-            target="_blank" 
-            rel="noopener noreferrer" 
+            href="mailto:vasudevan7348@gmail.com?cc=rhithickprakash2007@gmail.com" 
             className="gmail-button"
           >
             Contact via Gmail
