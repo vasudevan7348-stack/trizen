@@ -84,8 +84,11 @@ const App = () => {
     inspiration: '',
     contact: '',
   });
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    setIsMobile(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent));
+    
     const generatedStars: StarData[] = [];
     for (let i = 0; i < NUM_STARS; i++) {
       const size = Math.random() * 2 + 1;
@@ -214,6 +217,10 @@ const App = () => {
     color: 'rgba(255, 255, 255, 0.8)',
   };
 
+  const gmailLink = isMobile
+    ? "mailto:vasudevan7348@gmail.com?cc=rhithickprakash2007@gmail.com"
+    : "https://mail.google.com/mail/?view=cm&fs=1&to=vasudevan7348@gmail.com&cc=rhithickprakash2007@gmail.com";
+
   return (
     <>
       <nav style={navStyle}>
@@ -253,8 +260,10 @@ const App = () => {
             <strong>Let's create something amazing together'.</strong>
           </p>
           <a 
-            href="mailto:vasudevan7348@gmail.com?cc=rhithickprakash2007@gmail.com" 
+            href={gmailLink} 
             className="gmail-button"
+            target={isMobile ? '_self' : '_blank'}
+            rel={!isMobile ? "noopener noreferrer" : undefined}
           >
             Contact via Gmail
           </a>
