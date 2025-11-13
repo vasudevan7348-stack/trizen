@@ -114,8 +114,18 @@ const App = () => {
 
   useEffect(() => {
     const smoothingFactor = 0.01;
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
+    const handlePointerMove = (e: MouseEvent | TouchEvent) => {
+      let clientX, clientY;
+      
+      if ('touches' in e) {
+        if (e.touches.length === 0) return;
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+      } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+      }
+
       const { innerWidth, innerHeight } = window;
       targetRotation.current.y = (clientX / innerWidth - 0.5) * 20;
       targetRotation.current.x = (clientY / innerHeight - 0.5) * -20;
@@ -134,11 +144,13 @@ const App = () => {
       animationFrameId.current = requestAnimationFrame(animate);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handlePointerMove);
+    window.addEventListener('touchmove', handlePointerMove);
     animationFrameId.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('mousemove', handlePointerMove);
+      window.removeEventListener('touchmove', handlePointerMove);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
