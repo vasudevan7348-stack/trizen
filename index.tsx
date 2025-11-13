@@ -1,9 +1,12 @@
+
+
 import React, { useState, useEffect, useRef } from 'react';
 import { createRoot } from 'react-dom/client';
 
 const NUM_STARS = 150;
 
-const Star = ({ style }: { style: React.CSSProperties }) => {
+// FIX: Explicitly type Star as a React.FC to allow the 'key' prop in JSX.
+const Star: React.FC<{ style: React.CSSProperties }> = ({ style }) => {
   return <div style={style} />;
 };
 
@@ -218,8 +221,8 @@ const App = () => {
   };
 
   const gmailLink = isMobile
-    ? "mailto:vasudevan7348@gmail.com?cc=rhithickprakash2007@gmail.com"
-    : "https://mail.google.com/mail/?view=cm&fs=1&to=vasudevan7348@gmail.com&cc=rhithickprakash2007@gmail.com";
+    ? "mailto:vasudevan7348@gmail.com?cc=rhithickprakash2007@gmail.com,karthishwaran674@gmail.com"
+    : "https://mail.google.com/mail/?view=cm&fs=1&to=vasudevan7348@gmail.com&cc=rhithickprakash2007@gmail.com,karthishwaran674@gmail.com";
 
   return (
     <>
